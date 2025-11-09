@@ -1,10 +1,14 @@
-/* Variables pour les couleurs */
+/* =================================================== */
+/* GLOBAL & VARIABLES */
+/* =================================================== */
+
 :root {
     --primary-color: #38c8c6; /* Le turquoise dominant */
     --text-dark: #2c3e50; /* Couleur du texte sombre */
     --text-light: #ffffff;
-    --button-bg: #4b0082; /* Une couleur aubergine/indigo pour le bouton */
+    --button-bg: #4b0082; /* Couleur aubergine/indigo pour les boutons */
     --body-bg: #ffffff;
+    --light-bg: #f8f8f8; /* Arrière-plan léger pour les blocs */
 }
 
 /* Rénitialisation de base */
@@ -56,20 +60,74 @@ nav ul li a {
 
 nav ul li a.active {
     font-weight: 500;
-    /* Soulignement léger comme dans l'image */
     border-bottom: 3px solid var(--text-dark); 
 }
 
+
+/* =================================================== */
+/* SECTION HEADER RÉUTILISABLE (About Me, Contact, Resume...) */
+/* =================================================== */
+
+.about-me-header {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.about-me-header h2 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.about-me-header p {
+    font-size: 14px;
+    color: #777;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.about-me-header p::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 3px;
+    background-color: var(--primary-color);
+}
+
 /* -------------------------------------- */
-/* Style de la Section Hero (Introduction) */
+/* Style du Bouton Principal (réutilisé) */
 /* -------------------------------------- */
+.contact-button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--text-light);
+    padding: 10px 25px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.contact-button:hover {
+    background-color: #6a5acd; 
+}
+
+
+/* =================================================== */
+/* PAGE INDEX/HOME (HERO SECTION) */
+/* =================================================== */
+
 .hero-section {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 80px 100px;
-    background-color: var(--primary-color); /* Couleur de fond turquoise */
-    height: 70vh; /* Ajuster la hauteur de la section principale */
+    background-color: var(--primary-color); 
+    min-height: 70vh; 
     color: var(--text-dark);
 }
 
@@ -90,11 +148,6 @@ nav ul li a.active {
     margin-bottom: 10px;
 }
 
-.hero-content h1 strong {
-    /* Pour la partie en gras 'lorenzo fellon' */
-    font-weight: 700;
-}
-
 .role {
     font-size: 24px;
     font-weight: 500;
@@ -108,22 +161,6 @@ nav ul li a.active {
     margin-bottom: 30px;
 }
 
-.contact-button {
-    display: inline-block;
-    background-color: var(--button-bg);
-    color: var(--text-light);
-    padding: 10px 25px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: 500;
-    transition: background-color 0.3s;
-}
-
-.contact-button:hover {
-    background-color: #6a5acd; /* Couleur plus claire au survol */
-}
-
-/* Conteneur de l'Image Circulaire */
 .hero-image-container {
     flex: 1;
     display: flex;
@@ -133,228 +170,85 @@ nav ul li a.active {
 }
 
 .hero-image {
-    width: 300px; /* Taille du cercle */
+    width: 300px; 
     height: 300px;
-    border-radius: 50%; /* Rend l'image circulaire */
-    object-fit: cover; /* Assure que l'image couvre le cercle */
-    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.2); /* Effet d'anneau autour du cercle */
+    border-radius: 50%; 
+    object-fit: cover; 
+    box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.2); 
 }
 
-/* -------------------------------------- */
-/* Style de la Section 'About Me' */
-/* -------------------------------------- */
+
+/* =================================================== */
+/* PAGE ABOUT */
+/* =================================================== */
+
 .about-me-section {
     padding: 50px 100px;
-    text-align: center;
 }
 
-.about-me-header {
-    padding-top: 50px; /* Espace après la section Hero */
-}
-
-.about-me-header h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.about-me-header p {
-    font-size: 14px;
-    color: #777;
-    position: relative;
-    padding-bottom: 10px;
-    /* Ligne sous le texte 'KNOW ABOUT ME' */
-}
-
-.about-me-header p::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background-color: var(--primary-color);
-}
-
-/* -------------------------------------- */
-/* Media Queries pour la réactivité (Optionnel) */
-/* -------------------------------------- */
-@media (max-width: 1024px) {
-    .navbar, .hero-section {
-        padding: 20px 50px;
-    }
-    
-    .hero-content h1 {
-        font-size: 40px;
-    }
-}
-
-@media (max-width: 768px) {
-    .navbar {
-        flex-direction: column;
-    }
-    
-    nav ul {
-        padding-top: 10px;
-    }
-
-    .hero-section {
-        flex-direction: column;
-        text-align: center;
-        height: auto;
-        padding: 50px 20px;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        margin-bottom: 40px;
-    }
-
-    .hero-image {
-        width: 200px;
-        height: 200px;
-    }
-}
-
-/* -------------------------------------- */
-/* Style de la Section Contact */
-/* -------------------------------------- */
-.contact-section {
-    padding: 50px 100px;
-    background-color: var(--body-bg); /* Fond blanc */
-}
-
-/* Réutilisation du style d'en-tête (comme 'About Me') */
-.contact-header {
-    text-align: center;
-    padding-bottom: 50px;
-}
-
-.contact-header h2 {
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.contact-header p {
-    font-size: 14px;
-    color: #777;
-    position: relative;
-    padding-bottom: 10px;
-}
-
-.contact-header p::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 50px;
-    height: 3px;
-    background-color: var(--primary-color); /* Ligne turquoise */
-}
-
-/* Contenu Principal (Infos + Formulaire) */
-.contact-content {
+.about-content {
     display: flex;
-    gap: 80px;
+    gap: 60px;
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 40px auto;
 }
 
-.contact-info,
-.contact-form-container {
-    flex: 1;
+.text-presentation {
+    flex: 2;
 }
 
-.contact-info h3,
-.contact-form-container h3 {
+.text-presentation h3 {
     font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 25px;
     color: var(--primary-color);
-}
-
-/* Style des informations rapides */
-.contact-info p {
     margin-bottom: 20px;
 }
 
-.info-item {
+.text-presentation p {
+    line-height: 1.7;
     margin-bottom: 15px;
+}
+
+.key-facts {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.key-facts p {
+    font-size: 15px;
     line-height: 1.5;
 }
 
-.info-item p:first-child {
-    font-weight: 600;
+.skills-summary {
+    flex: 1;
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.skills-summary h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
     color: var(--text-dark);
 }
 
-/* Style du Formulaire */
-.contact-form .form-group {
-    margin-bottom: 20px;
+.skills-summary ul {
+    list-style: none;
 }
 
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    color: var(--text-dark);
-    transition: border-color 0.3s;
-}
-
-.contact-form textarea {
-    resize: vertical;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-.send-button {
-    display: inline-block;
-    background-color: var(--button-bg); /* Couleur aubergine/indigo */
-    color: var(--text-light);
-    padding: 12px 30px;
-    border: none;
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    font-family: 'Poppins', sans-serif;
-}
-
-.send-button:hover {
-    background-color: #6a5acd;
-}
-
-/* Media Queries pour la réactivité */
-@media (max-width: 900px) {
-    .contact-section {
-        padding: 50px 20px;
-    }
-    .contact-content {
-        flex-direction: column;
-        gap: 40px;
-    }
+.skills-summary li {
+    background-color: var(--body-bg);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid var(--primary-color);
+    font-size: 15px;
 }
 
 
-/* --- Styles Communs (réutilisation de about-me-header pour toutes les sections) --- */
-/* (Déjà défini dans la réponse précédente) */
+/* =================================================== */
+/* PAGE RESUME */
+/* =================================================== */
 
-/* -------------------------------------- */
-/* Style de la Page Resume (CV) */
-/* -------------------------------------- */
 .resume-section {
     padding: 50px 100px;
 }
@@ -401,70 +295,20 @@ nav ul li a.active {
     margin-top: 10px;
     font-size: 15px;
 }
-
-/* -------------------------------------- */
-/* Style de la Page About */
-/* -------------------------------------- */
-.about-content {
-    display: flex;
-    gap: 60px;
-    max-width: 1200px;
-    margin: 40px auto;
+.timeline-item ul {
+    margin-left: 20px;
+    list-style: disc;
 }
-
-.text-presentation {
-    flex: 2;
-}
-
-.text-presentation h3 {
-    font-size: 24px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.text-presentation p {
-    line-height: 1.7;
-    margin-bottom: 15px;
-}
-
-.key-facts {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid #eee;
-}
-
-.key-facts p {
-    font-size: 15px;
-    line-height: 1.5;
-}
-
-.skills-summary {
-    flex: 1;
-    background-color: #f4f4f4;
-    padding: 30px;
-    border-radius: 8px;
-}
-
-.skills-summary h3 {
-    font-size: 20px;
-    margin-bottom: 15px;
-    color: var(--text-dark);
-}
-
-.skills-summary ul {
-    list-style: none;
-}
-
-.skills-summary li {
-    background-color: var(--text-light);
-    padding: 10px;
+.skills-list p {
     margin-bottom: 10px;
-    border-left: 3px solid var(--primary-color);
+    line-height: 1.6;
 }
 
-/* -------------------------------------- */
-/* Style de la Page Portfolio */
-/* -------------------------------------- */
+
+/* =================================================== */
+/* PAGE PORTFOLIO */
+/* =================================================== */
+
 .portfolio-section {
     padding: 50px 100px;
 }
@@ -542,19 +386,204 @@ nav ul li a.active {
     align-items: center;
 }
 
-/* Media Queries pour la réactivité */
-@media (max-width: 900px) {
-    .resume-section, .about-me-section, .portfolio-section {
-        padding: 50px 20px;
+
+/* =================================================== */
+/* PAGE CONTACT */
+/* =================================================== */
+
+.contact-section {
+    padding: 50px 100px;
+    background-color: var(--body-bg);
+}
+
+.contact-header {
+    text-align: center;
+    padding-bottom: 50px;
+}
+
+.contact-content {
+    display: flex;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info,
+.contact-form-container {
+    flex: 1;
+}
+
+.contact-info h3,
+.contact-form-container h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: var(--primary-color);
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.info-item p:first-child {
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    color: var(--text-dark);
+    transition: border-color 0.3s;
+}
+
+.contact-form textarea {
+    resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary-color);
+    outline: none;
+}
+
+.send-button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--text-light);
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-family: 'Poppins', sans-serif;
+}
+
+.send-button:hover {
+    background-color: #6a5acd;
+}
+
+
+/* =================================================== */
+/* RESPONSIVE DESIGN (Media Queries) */
+/* =================================================== */
+
+/* --- Écrans de taille moyenne (Tablettes) --- */
+@media (max-width: 1024px) {
+    /* Réduction du padding général */
+    .navbar, 
+    .hero-section, 
+    .contact-section, 
+    .resume-section, 
+    .portfolio-section {
+        padding: 20px 40px; 
     }
-    .timeline-container, .about-content {
+}
+
+
+/* --- Petits écrans (Smartphones) --- */
+@media (max-width: 768px) {
+    /* Padding maximal réduit */
+    .navbar, 
+    .hero-section, 
+    .contact-section, 
+    .resume-section, 
+    .portfolio-section {
+        padding: 20px 20px;
+    }
+    
+    /* Navigation en colonne */
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .navbar .logo {
+        margin-bottom: 15px; 
+    }
+    
+    nav ul {
+        flex-wrap: wrap; 
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 10px 10px 10px; 
+    }
+
+    /* Section HERO (Index) */
+    .hero-section {
+        flex-direction: column; 
+        text-align: center;
+        height: auto; 
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    
+    .hero-content {
+        max-width: 100%;
+        order: 2; 
+        margin-top: 40px;
+    }
+    
+    .hero-image-container {
+        order: 1; 
+        max-width: 100%;
+    }
+    
+    .hero-content h1 {
+        font-size: 36px; 
+    }
+
+    .hero-image {
+        width: 250px;
+        height: 250px;
+        box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.2); 
+    }
+
+    /* Structures en deux colonnes (About, Resume, Contact) */
+    .contact-content, 
+    .timeline-container, 
+    .about-content {
         flex-direction: column;
         gap: 40px;
     }
-    .timeline-item {
-        margin-left: 0;
+    
+    .timeline-column,
+    .text-presentation,
+    .skills-summary {
+        flex: 1 1 100%; 
     }
+    
+    .timeline-item {
+        border-left: none; 
+        padding-left: 0;
+    }
+
+    /* Portfolio Grid en une seule colonne */
     .project-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Ajustement des marges dans About */
+    .skills-summary {
+        padding: 20px;
     }
 }
